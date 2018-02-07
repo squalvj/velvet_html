@@ -40,24 +40,24 @@ ul
 		padding-right 40px
 @media (min-width: 1084px)
 	.container
-		padding-left 42px
-		padding-right 42px
+		padding-left 84px
+		padding-right 84px
 		
 @media (min-width: 1280px)
 	div.wrapper-desc-product
-		width 27%
+		width 20.7%
 	div.content-single
-		width 73%
+		width 79.3%
 	div.filter-archive
 		width 10.3%
 	div.collection-archive
 		width 89.7%
 	.container
 		width unset
-		padding-left 45px
-		padding-right 45px
+		// padding-left 45px
+		// padding-right 45px
 	.collection-archive
-		padding-right 35px
+		padding-right 87px
 @media (min-width: 1400px)
 	.container
 		width 1265px
@@ -74,7 +74,9 @@ ul
 	font-size 12px
 	letter-spacing 1px
 	font-weight 500
-	
+.img100
+	width 100%
+	height auto
 
 // navbar
 header
@@ -150,6 +152,11 @@ button
 	box-shadow none
 .content
 	margin-top 170px
+	opacity 0
+.nav-item
+	opacity 0
+#velvet,#shop
+	opacity 1
 // hero
 .container-hero
 	display flex
@@ -237,7 +244,6 @@ section.full
 	bottom 0
 	left 0
 	z-index 5
-	padding: 70px;
 	padding-bottom: 35px;
 	a
 		font-family gothicM
@@ -256,7 +262,7 @@ section.full
 	display flex
 	margin-bottom 30px
 .filter-archive
-	width 20%
+	width 15%
 	padding-right 20px
 	z-index 101
 	h3
@@ -269,16 +275,16 @@ section.full
 	padding-right 20px
 	z-index 101
 .collection-archive
-	width 80%
+	width 85%
 	display flex
 	flex-wrap wrap
-	margin -30px
+	margin -22px
 .content-single
 	//width 70%
 	width 80%
-	padding 0 28.5% 0 5%
+	padding 0 31% 0 10.3%
 	figure
-		margin 0 0 50px
+		margin 0 0 44px
 		&:first-child
 			margin-top 0
 		img
@@ -286,7 +292,7 @@ section.full
 			height auto
 .item-archive
 	width 33.3333333333%
-	padding 30px
+	padding 22px
 	img
 		width 100%
 .name,.price
@@ -381,7 +387,7 @@ section.full
 	transition all .25s ease
 	&:hover
 		cursor pointer
-		border-radius 20px
+		border-radius 15px
 .price-wrapper
 	display flex
 	flex-direction column
@@ -402,6 +408,48 @@ section.full
 		line-height 18px
 		&:hover
 			text-decoration underline
+.direction-product
+	display flex
+	margin 88px 0 0
+	justify-content space-between
+	.left,.right
+		width 45%
+		display flex
+		a
+			font-size 12px
+			font-family helveticaL
+			letter-spacing 1px
+			color black
+	.left
+		justify-content flex-end
+.wrapper-similar-product
+	display flex
+	margin 0 -21px
+	margin-top 44px
+.similar-product
+	margin 0 21px
+	a
+		position relative
+		display block
+		&:after
+			width 100%
+			content ''
+			position absolute
+			height calc(100% - 4px)
+			top 0
+			left 0
+			transition all .25s ease
+			opacity 0
+			background rgba(0,0,0,0.5)
+		&:hover
+			&:after
+				opacity 1
+		
+// divider
+.divider
+	width 100%
+	height 1px
+	background rgba(0,0,0,0.5)
 // footer
 .wrapper-footer-left
 	display flex
@@ -496,6 +544,10 @@ section.full
 		padding 0 20% 0 5%
 	.wrapper-desc-product
 		width 30%
+	.collection-archive
+		width 80%
+	.filter-archive
+		width 20%
 		
 	
 
@@ -522,6 +574,13 @@ section.full
 			width 25%
 	
 @media (max-width: 576px)
+	.wrapper-similar-product
+		flex-wrap wrap
+		margin 0 -20px
+	.similar-product
+		width 50%
+		margin 0
+		padding 20px
 	.wrapper-content-full
 		padding 30px
 	.container-full
