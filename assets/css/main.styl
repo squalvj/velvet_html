@@ -1,0 +1,228 @@
+@font-face
+	font-family gothicM
+	src url(../fonts/LetterGothicMonoPro-Light.woff)
+	font-style normal
+@font-face
+	font-family helveticaL
+	src: url('../fonts/HelveticaNeue-Light.woff2') format('woff2'), url('../fonts/HelveticaNeue-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+@font-face
+	font-family helveticaR
+	src url(../fonts/HelveticaNeue.woff)
+	font-style normal
+
+$block = 35
+$marginNavItem = 5px
+// container bootstrap
+a
+	text-decoration none
+	&:hover
+		text-decoration none
+ul
+	list-style-type none
+.rel
+	position relative
+.container
+	padding-right: 30px;
+	padding-left: 30px;
+	margin-right: auto;
+	margin-left: auto;
+@media (min-width: 576px)
+	.container
+		padding-left 30px
+		padding-right 30px
+@media (min-width: 768px)
+	.container
+		padding-left 40px
+		padding-right 40px
+@media (min-width: 1084px)
+	.container
+		padding-left 70px
+		padding-right 70px
+		
+@media (min-width: 1280px)
+	.container
+		width 1220px
+*, *:before, *:after
+	box-sizing: border-box;
+	
+.description-helv
+	font-family helveticaL
+	color black
+	font-size 12px
+	letter-spacing 1px
+	font-weight 500
+
+// navbar
+header
+	padding 50px 0
+	nav
+		.nav-up
+			li:first-child,li:last-child
+				a
+					font-family gothicM
+					font-size 30px
+		ul
+			margin 0
+			display flex
+			flex-direction row
+			list-style-type none
+			align-items baseline
+			padding 0
+			justify-content center
+			li
+				a
+					font-size 28px
+					font-family helveticaL
+					color black
+					margin-left $marginNavItem
+					margin-right $marginNavItem
+					&.active
+						color black
+					&:after
+						font-family helveticaL
+						color black
+						content ','
+				&:first-child
+					a
+						&:after
+							display none
+				&:last-child
+					a
+						&:after
+							display none
+						
+			&.nav-bottom
+				li
+					a
+						font-size 30px
+						color black
+						font-family gothicM
+						letter-spacing -1.5px
+						span.cart-count
+							font-size 23px
+					&:first-child
+						a:after
+							display inline
+.nav-up
+	position relative
+	span
+		position absolute
+		font-family gothicM
+		font-size 26px
+		text-decoration none
+		color black
+		left 0
+		top 0
+
+section
+	padding 35px 0 70px
+
+// hero
+.container-hero
+	display flex
+.hero
+	width 100%
+	height auto
+.image-hero
+	width 100%
+.caption-hero
+	margin 0
+	margin-top 10px
+	padding-right 25px
+	line-height 16px
+	a.arrow
+		display inline-block
+		position: relative;
+		width: 50px;
+		height: 8px;
+		background url(../img/arrow.svg)
+		background-size contain
+		background-repeat no-repeat
+.link-caption
+	font-size 14px
+	font-family gothicM
+	color inherit
+	text-decoration underline
+	letter-spacing 0
+	&:hover
+		text-decoration underline
+.wrapper-img-hero
+	a
+		display block
+		
+// grid container
+.container-grid
+	display flex
+	flex-wrap wrap
+	margin -18px
+	&:after
+		content: "";
+		flex: auto;
+.item-grid
+	width 10%
+	height auto
+.image-grid
+	width 100%
+.link-grid
+	display block
+	padding 18px
+
+// carousel home
+.counter-carousel
+	font-family helveticaL
+	font-size 12px
+	display flex
+	justify-content flex-end
+	width 100%
+	position relative
+	span
+		&:first-child
+			text-decoration underline
+.item-hero-carousel
+	.caption-hero
+		padding-right 50px
+// -----------------------------------------------------------------------------------------------------------
+@media (max-width: 1280px)
+	header
+		nav
+			ul
+				flex-wrap wrap
+@media (max-width: 1084px)
+	.item-grid
+		width 20%
+
+@media (max-width: 768px)
+	.item-grid
+			width 25%
+	
+@media (max-width: 576px)
+	header
+		padding 30px 0
+		nav
+			.nav-up
+				justify-content flex-start
+				li
+					a
+						font-size 24px
+					&:first-child,&:last-child
+						a
+							font-size 26px
+			ul.nav-bottom
+				justify-content flex-start
+				li
+					a
+						font-size 24px
+	section
+		padding 20px 0
+	.link-grid
+		padding 15px
+	.container-grid
+		margin -15px
+	.item-grid
+		width 50%
+	.container-hero
+		flex-wrap wrap
+	.hero:last-child
+		margin-top 35px
