@@ -79,14 +79,17 @@ function initCar(event) {
 }
 
 function initSticky(){
-
+	var top;
 	var w = $(window).width();
 	if($(".sticky").length && w > 765){
-		$(".sticky").stick_in_parent({offset_top: 65});
+		top = $(".sticky").offset();
+		$(".sticky").stick_in_parent({offset_top: top.top});
 	}
 	
 	if ($(".sticky-single").length && w > 756){
-		$(".sticky-single").stick_in_parent({offset_top: 100});
+		var top = $(".sticky-single").offset();
+		console.log(top)
+		$(".sticky-single").stick_in_parent({offset_top: top.top,inner_scrolling:false});
 	}
 }
 
@@ -95,6 +98,18 @@ function initSticky(){
 
 $(".direction-product a").click(function(event) {
 	event.preventDefault();
+
+	if(!$(this).hasClass('active')){
+		var target = $(this).data('target')
+		$(".direction-product a").removeClass('active')
+		$(".wrapper-similar-product").removeClass('active')
+		setTimeout(function(){
+			$("."+target).addClass('active')
+		},750)
+	}
+	$(this).addClass('active')
+	
+	
 });
 
 $(".item-hero-carousel .wrapper-img-hero").bind('mousemove', function(e) {

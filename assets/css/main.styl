@@ -457,8 +457,16 @@ section.full
 		justify-content flex-end
 .wrapper-similar-product
 	display flex
-	margin 0 -21px
-	margin-top 44px
+	//margin 44px -21px 0
+	margin 0
+	max-height 0
+	overflow hidden
+	transition max-height .50s ease,margin .75s ease
+	&.active
+		max-height 300px
+		margin 44px -21px 0 
+		img
+			opacity 1
 .similar-product
 	margin 0 21px
 	a
@@ -477,6 +485,10 @@ section.full
 		&:hover
 			&:after
 				opacity 1
+		img
+			opacity 0
+			transition opacity .25s ease
+			//transition-delay 1s
 		
 // divider
 .divider
