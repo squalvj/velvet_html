@@ -18,8 +18,8 @@ if(w > 756){
 			var img = span.find('img');
 			img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
 		}
-		span.velocity({display:'inline-flex',marginLeft:10,opacity:0,width:0},{duration:50})
-		.velocity({width:90,opacity:1},{duration:250,complete:show},[0.165, 0.84, 0.44, 1])
+		span.velocity({display:'inline-flex',width:0,opacity:0},{duration:50})
+		.velocity({width:90,marginLeft:10,opacity:1},{duration:250,complete:show},[0.165, 0.84, 0.44, 1])
 	}, function() {
 		var span = $(this).find('span')
 		var hide = function(){
@@ -27,7 +27,7 @@ if(w > 756){
 			img.velocity({opacity:0},{duration:250},[0.165, 0.84, 0.44, 1])
 		}
 		span.velocity({width:0,opacity:0,marginLeft:0},{duration:250,complete:hide},[0.165, 0.84, 0.44, 1])
-		.velocity({display:'none',width:0,opacity:0},{duration:50})
+		.velocity({display:'none',opacity:0},{duration:50})
 	});
 }else{
 
