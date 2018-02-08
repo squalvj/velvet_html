@@ -18,7 +18,7 @@ if(w > 756){
 			var img = span.find('img');
 			img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
 		}
-		span.velocity({display:'inline-flex',marginLeft:10,width:0,opacity:0},{duration:50})
+		span.velocity({display:'inline-flex',marginLeft:10,opacity:0,width:0},{duration:50})
 		.velocity({width:90,opacity:1},{duration:250,complete:show},[0.165, 0.84, 0.44, 1])
 	}, function() {
 		var span = $(this).find('span')

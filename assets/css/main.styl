@@ -84,7 +84,7 @@ header
 	position fixed
 	padding 50px 0 0
 	width 100%
-	z-index 100
+	z-index 9999
 	top 0
 	nav
 		.nav-up
@@ -166,7 +166,7 @@ button
 .hoverable
 	span
 		position relative
-		width 90px
+		width 0px
 		display: none;
 		justify-content: space-between;
 		opacity 0
@@ -463,12 +463,13 @@ section.full
 	overflow hidden
 	transition max-height .50s ease,margin .75s ease
 	&.active
-		max-height 300px
+		max-height 500px
 		margin 44px -21px 0 
 		img
 			opacity 1
 .similar-product
 	margin 0 21px
+	width 25%
 	a
 		position relative
 		display block
@@ -621,11 +622,13 @@ section.full
 @media (max-width: 576px)
 	.wrapper-similar-product
 		flex-wrap wrap
-		margin 0 -20px
+		margin 0 -15px
+		&.active
+			margin 0 -15px
 	.similar-product
 		width 50%
 		margin 0
-		padding 20px
+		padding 15px
 	.wrapper-content-full
 		padding 30px
 	.container-full
