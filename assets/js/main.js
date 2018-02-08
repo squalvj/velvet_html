@@ -69,6 +69,31 @@ function initSticky(){
 	}
 }
 
+function showImgNav(){
+	//var img = el.find('img');
+	//img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
+	console.log('complete')
+}
+
+$(".hoverable").hover(function() {
+	var span = $(this).find('span')
+	var show = function(){
+		var img = span.find('img');
+		img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
+	}
+	span.velocity({display:'inline-flex',width:0,opacity:0},{duration:50})
+	.velocity({width:90,opacity:1},{duration:250,complete:show},[0.165, 0.84, 0.44, 1])
+}, function() {
+	var span = $(this).find('span')
+	var hide = function(){
+		var img = span.find('img');
+		img.velocity({opacity:0},{duration:250},[0.165, 0.84, 0.44, 1])
+	}
+	span.velocity({width:0,opacity:0},{duration:250,complete:hide},[0.165, 0.84, 0.44, 1])
+	.velocity({display:'none',width:0,opacity:0},{duration:50})
+
+});
+
 $(".item-hero-carousel .wrapper-img-hero").bind('mousemove', function(e) {
 	var parentOffset = $(this).offset(); 
 	var relX = e.pageX - parentOffset.left;
@@ -79,5 +104,4 @@ $(".item-hero-carousel .wrapper-img-hero").bind('mousemove', function(e) {
 	}
 	else
 		$(this).find('a').css('cursor', 'url("../assets/img/arrow-r.png"), auto')
-
 });

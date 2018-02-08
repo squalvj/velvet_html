@@ -77,11 +77,12 @@ ul
 .img100
 	width 100%
 	height auto
-
+a.active
+	text-decoration underline
 // navbar
 header
 	position fixed
-	padding 50px 0
+	padding 50px 0 0
 	width 100%
 	z-index 100
 	top 0
@@ -135,14 +136,14 @@ header
 							display inline
 .nav-up
 	position relative
-	span
-		position absolute
-		font-family gothicM
-		font-size 26px
-		text-decoration none
-		color black
-		left 0
-		top 0
+	// span
+	// 	position absolute
+	// 	font-family gothicM
+	// 	font-size 26px
+	// 	text-decoration none
+	// 	color black
+	// 	left 0
+	// 	top 0
 
 section
 	padding 35px 0 70px
@@ -155,6 +156,35 @@ button
 	opacity 0
 .nav-item
 	opacity 0
+	position relative
+	a
+		display inline-block
+		transition all .25s ease
+		position relative
+		z-index 2
+		pointer-events fill
+.hoverable
+	span
+		position relative
+		width 90px
+		display: none;
+		justify-content: space-between;
+		pointer-events all
+		&:before
+			content '('
+			font-family helveticaL
+			font-size 28px
+		&:after
+			content ')'
+			font-family helveticaL
+			font-size 28px
+		img
+			top -100%
+			width 65px
+			position absolute
+			left 50%
+			opacity 0
+			transform translateX(-50%)
 #velvet,#shop
 	opacity 1
 // hero
