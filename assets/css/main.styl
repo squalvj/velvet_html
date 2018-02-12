@@ -5,8 +5,7 @@
 @font-face
 	font-family helveticaL
 	src: url('../fonts/Helvetica/HelveticaNeue-Light.woff');
-	font-weight: 300;
-	font-style: normal;
+	
 @font-face
 	font-family helveticaR
 	src url(../fonts/HelveticaNeue.woff)
@@ -77,13 +76,23 @@ ul
 .img100
 	width 100%
 	height auto
-
+a.active
+	text-decoration underline
 // navbar
+#shop
+	img
+		height: 30px;
+		position: relative;
+		top: 8px;
+
+#velvet
+	img
+		height 22px
 header
 	position fixed
-	padding 50px 0
+	padding 50px 0 0
 	width 100%
-	z-index 100
+	z-index 9999
 	top 0
 	nav
 		.nav-up
@@ -127,7 +136,7 @@ header
 						font-size 30px
 						color black
 						font-family gothicM
-						letter-spacing -1.5px
+						letter-spacing -0.5px
 						span.cart-count
 							font-size 23px
 					&:first-child
@@ -135,14 +144,14 @@ header
 							display inline
 .nav-up
 	position relative
-	span
-		position absolute
-		font-family gothicM
-		font-size 26px
-		text-decoration none
-		color black
-		left 0
-		top 0
+	// span
+	// 	position absolute
+	// 	font-family gothicM
+	// 	font-size 26px
+	// 	text-decoration none
+	// 	color black
+	// 	left 0
+	// 	top 0
 
 section
 	padding 35px 0 70px
@@ -155,6 +164,47 @@ button
 	opacity 0
 .nav-item
 	opacity 0
+	position relative
+	a
+		display inline-block
+		transition all .25s ease
+		position relative
+		z-index 2
+		pointer-events fill
+.hoverable
+	width auto
+	span
+		position relative
+		width 0px
+		display none
+		//display: inline-flex;
+		justify-content: space-between;
+		opacity 0
+		margin-left 0
+		height 28px
+		&:before
+			content '('
+			display inline-block
+			position absolute
+			top 0
+			font-family helveticaL
+			font-size 28px
+			left 0
+		&:after
+			right 0
+			content ')'
+			display inline-block
+			position absolute
+			top 0
+			font-family helveticaL
+			font-size 28px
+		img
+			top -100%
+			width 65px
+			position absolute
+			left 50%
+			opacity 0
+			transform translateX(-50%)
 #velvet,#shop
 	opacity 1
 // hero
@@ -269,6 +319,7 @@ section.full
 		font-family gothicM
 		font-size 13px
 		margin 0
+		margin-bottom 10px
 .wrapper-desc-product
 	//width 30%
 	width 20%
@@ -302,16 +353,21 @@ section.full
 	font-family gothicM
 	font-size 14px
 	color black
+	margin-bottom 4px
 .price
 	font-family helveticaL
 	font-size 12px
 	color black
+	margin-top 0
+	letter-spacing 1px
 .group-filter
 	margin 20px 0
 	&:not(:first-of-type)
 		margin-top 0
 	&:last-child
 		margin-bottom 0
+	&:first-child
+		margin-top 0
 	ul
 		margin 0
 		padding 0
@@ -321,6 +377,8 @@ section.full
 			color black
 			letter-spacing 1px
 			margin 7px 0
+			&:first-child
+				margin-top 0
 			label
 				display block
 				position relative
@@ -357,6 +415,7 @@ section.full
 				&:hover
 					text-decoration underline
 .name-product
+	font-weight normal
 	margin-top 0
 	font-family gothicM
 	font-size 14px
@@ -379,11 +438,13 @@ section.full
 		text-decoration underline
 		cursor pointer
 .add-btn
-	font-size 14px
+	font-size 12px
+	letter-spacing 1px
 	background white
 	color black
 	border 1px solid black
 	padding 15px 30px
+	font-family helveticaL
 	transition all .25s ease
 	&:hover
 		cursor pointer
@@ -420,14 +481,26 @@ section.full
 			font-family helveticaL
 			letter-spacing 1px
 			color black
+			&:hover
+				text-decoration underline
 	.left
 		justify-content flex-end
 .wrapper-similar-product
+	flex-wrap wrap
 	display flex
-	margin 0 -21px
-	margin-top 44px
+	//margin 44px -21px 0
+	margin 44px -21px 0 
+	overflow hidden
+	min-height 135px
+	//transition opacity .25s ease,margin .25s ease
+	&.active
+		opacity 1
 .similar-product
-	margin 0 21px
+	width 0%
+	transform scale(0)
+	opacity 0
+	height 0
+	transition transform 0s ease, opacity .75s ease .05s
 	a
 		position relative
 		display block
@@ -444,6 +517,19 @@ section.full
 		&:hover
 			&:after
 				opacity 1
+		img
+			opacity 0
+			transition opacity .25s ease
+			//transition-delay 1s
+				
+	&.active
+		width 25%
+		transform scale(1)
+		opacity 1
+		height auto
+		padding 0 20px
+		img
+			opacity 1
 		
 // divider
 .divider
@@ -513,6 +599,7 @@ section.full
 				background white
 				padding-top 10px
 				padding-bottom 10px
+				padding-right 0
 				height: 100%;
 				display: flex;
 				justify-content: center;
@@ -576,11 +663,14 @@ section.full
 @media (max-width: 576px)
 	.wrapper-similar-product
 		flex-wrap wrap
-		margin 0 -20px
+		margin 0 -15px
+		&.active
+			margin 0 -15px
 	.similar-product
-		width 50%
-		margin 0
-		padding 20px
+		&.active
+			width 50%
+			margin 0
+			padding 15px
 	.wrapper-content-full
 		padding 30px
 	.container-full

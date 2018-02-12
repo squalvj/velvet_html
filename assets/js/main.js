@@ -1,7 +1,7 @@
-$(document).ready(function() {
- 		
+var w = $(window).width();
+// $(document).ready(function() {
  
-});
+// });
 
 $(window).bind("load", function() {
   // init();
@@ -10,6 +10,39 @@ $(window).bind("load", function() {
   muncul();
 });
 
+// responsive function
+if(w > 756){
+	$(".hoverable").hover(function() {
+		var span = $(this).find('span')
+		var dom = span[0]
+		var begin = function(){
+
+		}
+		var show = function(){
+			var img = span.find('img');
+			//img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
+			TweenMax.to(img,.25,{opacity:1})
+			
+		}
+		var tl = new TimelineLite({force3D:true});
+		tl.set(span, {display:'inline-block'})
+		tl.to(span,.25,{width:90,marginLeft:10,opacity:1,onComplete:show})
+	}, function() {
+		var span = $(this).find('span')
+		var hide = function(){
+			var img = span.find('img')
+			TweenMax.to(img,.25,{opacity:0})
+		}
+		var block = function(){
+			TweenMax.set(span,{dispay:'none'})
+		}
+		var tl = new TimelineLite();
+		tl.to(span,.25, {width:0,marginLeft:0,opacity:0,onStart:hide,onComplete:block})
+	});
+}else{
+
+}
+
 function muncul(){
 	$(".content, .nav-item").velocity({opacity:1},{duration:500,delay:1000})
 }
@@ -17,8 +50,6 @@ function muncul(){
 function init(){
 	
 }
-
-
 
 function InitCarouselHome(){
 	if ($(".hero-carousel").length){
@@ -58,16 +89,34 @@ function initCar(event) {
 }
 
 function initSticky(){
-
+	var top;
 	var w = $(window).width();
 	if($(".sticky").length && w > 765){
-		$(".sticky").stick_in_parent({offset_top: 65});
+		top = $(".sticky").offset();
+		$(".sticky").stick_in_parent({offset_top: top.top});
 	}
 	
 	if ($(".sticky-single").length && w > 756){
-		$(".sticky-single").stick_in_parent({offset_top: 100});
+		var top = $(".sticky-single").offset();
+		console.log(top)
+		$(".sticky-single").stick_in_parent({offset_top: top.top,inner_scrolling:false});
 	}
 }
+
+
+
+
+$(".direction-product a").click(function(event) {
+	event.preventDefault();
+
+	var target = $(this).data('targetSimilar')
+	$(".direction-product a").removeClass('active')
+	$(".similar-product").removeClass('active')
+	$(".similar-product[data-target-similar='"+target+"']").addClass('active')
+	$(this).addClass('active')
+	
+	
+});
 
 $(".item-hero-carousel .wrapper-img-hero").bind('mousemove', function(e) {
 	var parentOffset = $(this).offset(); 
@@ -79,5 +128,4 @@ $(".item-hero-carousel .wrapper-img-hero").bind('mousemove', function(e) {
 	}
 	else
 		$(this).find('a').css('cursor', 'url("../assets/img/arrow-r.png"), auto')
-
 });
