@@ -14,20 +14,30 @@ $(window).bind("load", function() {
 if(w > 756){
 	$(".hoverable").hover(function() {
 		var span = $(this).find('span')
+		var dom = span[0]
+		var begin = function(){
+
+		}
 		var show = function(){
 			var img = span.find('img');
-			img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
+			//img.velocity({opacity:1},{duration:250},[0.165, 0.84, 0.44, 1])
+			TweenMax.to(img,.25,{opacity:1})
+			
 		}
-		span.velocity({display:'inline-flex',width:0,opacity:0},{duration:50})
-		.velocity({width:90,marginLeft:10,opacity:1},{duration:250,complete:show},[0.165, 0.84, 0.44, 1])
+		var tl = new TimelineLite({force3D:true});
+		tl.set(span, {display:'inline-block'})
+		tl.to(span,.25,{width:90,marginLeft:10,opacity:1,onComplete:show})
 	}, function() {
 		var span = $(this).find('span')
 		var hide = function(){
-			var img = span.find('img');
-			img.velocity({opacity:0},{duration:250},[0.165, 0.84, 0.44, 1])
+			var img = span.find('img')
+			TweenMax.to(img,.25,{opacity:0})
 		}
-		span.velocity({width:0,opacity:0,marginLeft:0},{duration:250,complete:hide},[0.165, 0.84, 0.44, 1])
-		.velocity({display:'none',opacity:0},{duration:50})
+		var block = function(){
+			TweenMax.set(span,{dispay:'none'})
+		}
+		var tl = new TimelineLite();
+		tl.to(span,.25, {width:0,marginLeft:0,opacity:0,onStart:hide,onComplete:block})
 	});
 }else{
 
@@ -99,14 +109,10 @@ function initSticky(){
 $(".direction-product a").click(function(event) {
 	event.preventDefault();
 
-	if(!$(this).hasClass('active')){
-		var target = $(this).data('target')
-		$(".direction-product a").removeClass('active')
-		$(".wrapper-similar-product").removeClass('active')
-		setTimeout(function(){
-			$("."+target).addClass('active')
-		},750)
-	}
+	var target = $(this).data('targetSimilar')
+	$(".direction-product a").removeClass('active')
+	$(".similar-product").removeClass('active')
+	$(".similar-product[data-target-similar='"+target+"']").addClass('active')
 	$(this).addClass('active')
 	
 	
